@@ -61,6 +61,10 @@ app.post("/api/notes", (req, res) => {
   });
 });
 
+const unknownEndpoint = (req, res) => {
+  res.status(404).send({ error: "Unknown endpoint." });
+};
+
 const errorHandler = (err, req, res, next) => {
   console.error(err.message);
 
@@ -71,6 +75,7 @@ const errorHandler = (err, req, res, next) => {
   next(error);
 };
 
+app.use(unknownEndpoint);
 app.use(errorHandler);
 
 const PORT = process.env.PORT || 3001;
