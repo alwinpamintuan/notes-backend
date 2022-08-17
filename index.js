@@ -3,6 +3,7 @@ import cors from "cors";
 import notesObj from "./notes.json" assert { type: "json" };
 
 const app = express();
+app.use(express.static("build"));
 app.use(express.json());
 app.use(cors());
 
